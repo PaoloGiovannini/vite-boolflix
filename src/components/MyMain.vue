@@ -62,9 +62,9 @@ main{
         margin: auto;
     }
     .card{
-            width: calc(100% / 5 - 10px);
-            margin: 10px 5px; 
-        }
+        width: calc(100% / 5 - 10px);
+        margin: 10px 5px; 
+    }
    
 }
 
