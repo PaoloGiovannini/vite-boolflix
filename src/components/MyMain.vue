@@ -19,7 +19,9 @@ export default{
 
     <main>
         <h2 v-if="store.filmArray.length <= 0">Inserisci un film/serie tv</h2>
+        <h1 v-if="store.filmArray.length > 0">FILM</h1>
         <div class="container d-flex">
+            
             <div class="card"  v-for="(film, index) in store.filmArray" :key="index">
                 
                 <Appcard  
@@ -31,6 +33,21 @@ export default{
                 />                 
             </div>
         </div>
+        <h1 v-if="store.serieArray.length > 0">SERIE TV</h1>
+        <div class="container d-flex">
+            
+            <div class="card"  v-for="(serie, index) in store.serieArray" :key="index">
+                
+                <Appcard  
+                    :title="serie.name"
+                    :original_title="serie.original_name"
+                    :original_language="serie.original_language"
+                    :vote="serie.vote_average"
+                    
+                />                 
+            </div>
+        </div>
+
     </main>
 
 </template>

@@ -21,10 +21,21 @@ export default{
           this.store.filmArray = response.data.results;
           
         });
+      },
+      getSerie(){
+        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=79fa47aa93f64aa97d20631a74952dff&query=${store.search}&language=it-IT`)
+        .then(response => {
+          this.store.serieArray = response.data.results;
+          
+        });
+      },
+      getAll(){
+        this.getFilm();
+        this.getSerie();
       }
     },
     created(){
-      this.getFilm();
+      this.getAll();
     }
     
 }
@@ -32,7 +43,7 @@ export default{
 
 <template>
 
-  <MyHeader @doSearch="getFilm"/>
+  <MyHeader @doSearch="getAll" />
   <MyMain/>
 
 </template>
