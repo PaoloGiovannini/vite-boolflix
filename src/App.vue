@@ -2,10 +2,11 @@
 import axios from 'axios';
 import{ store } from './store.js';
 import MyHeader from './components/MyHeader.vue';
-
+import MyMain from './components/MyMain.vue'
 export default{
   components:{
-    MyHeader
+    MyHeader,
+    MyMain
   },
     data() {
         return {
@@ -32,6 +33,7 @@ export default{
 <template>
 
   <MyHeader @doSearch="getFilm"/>
+  <MyMain/>
 
 </template>
 

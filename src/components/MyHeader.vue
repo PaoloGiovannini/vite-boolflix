@@ -12,14 +12,15 @@ export default{
 </script>
 
 <template>
-    <div class="d-flex justify-between" id="my-header">
-        <h2>BOOLFLIX</h2>
-        <div>
-            <input type="search" placeholder="cerca film o serie" v-model="store.search">
-            <button @click="$emit('doSearch')">Cerca</button>
+    <header>
+        <div class="d-flex justify-between" id="my-header">
+            <h2>BOOLFLIX</h2>
+            <div>
+                <input type="search" placeholder="cerca film o serie" v-model="store.search" @keyup.enter="$emit('doSearch')">
+                <button @click="$emit('doSearch')">Cerca</button>
+            </div>
         </div>
-        
-    </div>
+    </header>
 </template>
 
 <style scoped lang="scss">
