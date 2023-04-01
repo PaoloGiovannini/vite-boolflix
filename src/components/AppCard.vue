@@ -84,6 +84,9 @@ export default{
                 list-style: none;
                 display: flex;
                 justify-content: center;
+                & i{
+                    color: goldenrod;
+                }
                 & p{
                     margin-top: 20px;
                 }
