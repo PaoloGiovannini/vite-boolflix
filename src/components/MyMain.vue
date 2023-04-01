@@ -18,7 +18,7 @@ export default{
 <template>
 
     <main>
-        <h2 v-if="store.filmArray.length <= 0">Inserisci un film/serie tv</h2>
+        <h1 v-if="store.filmArray.length <= 0">Inserisci un film/serie tv</h1>
         <h1 v-if="store.filmArray.length > 0">FILM</h1>
         <div class="container d-flex">
             
@@ -30,6 +30,7 @@ export default{
                     :original_language="film.original_language"
                     :vote="film.vote_average"
                     :image="film.poster_path"
+                    :description="film.overview"
                 />                 
             </div>
         </div>
@@ -44,6 +45,7 @@ export default{
                     :original_language="serie.original_language"
                     :vote="serie.vote_average"
                     :image="serie.poster_path"
+                    :description="serie.overview"
                 />                 
             </div>
         </div>
@@ -56,6 +58,9 @@ export default{
 <style scoped lang="scss">
 main{
     background-color: grey;
+    & h1{
+        padding: 20px;
+    }
     .container{
         flex-wrap: wrap;
         max-width: 1170px;

@@ -6,7 +6,8 @@ export default{
         original_title: String,
         original_language: String,
         vote: Number,
-        image: String
+        image: String,
+        description: String
     }
 }
 </script>
@@ -40,6 +41,9 @@ export default{
                             <i v-if="i > Math.ceil(vote / 2)" class="fa-regular fa-star"></i>
                         </span>
                         </li>
+                        <li>
+                            <p>{{ description }}</p>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -71,6 +75,7 @@ export default{
             color: white;
             transform: rotateY(180deg);
             padding: 30px 0px;
+            overflow-y: scroll;
             .flag{
                 width: 20px;
                 padding: 10px 0px;
@@ -79,6 +84,9 @@ export default{
                 list-style: none;
                 display: flex;
                 justify-content: center;
+                & p{
+                    margin-top: 20px;
+                }
             }
         }
         
