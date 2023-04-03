@@ -51,7 +51,11 @@ export default{
                             <p>{{ description }}</p>
                         </li>
                         <h3>Cast:</h3>
-                        <li v-for="(cast, index) in store.castArray.slice(0,5)" :key="index">{{ cast.name }}</li>
+                        <li class="column" v-if="store.castArray.length > 0" >
+                            <p v-for="(cast, index) in store.castArray.slice(0,5)" :key="index">{{ cast.name }}</p></li>
+                        <li class="column" v-else-if="store.castSerie.length > 0">
+                            <p v-for="(element, index) in store.castSerie.slice(0,5)" :key="index">{{ element.name }}</p>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -84,6 +88,9 @@ export default{
             transform: rotateY(180deg);
             padding: 30px 0px;
             overflow-y: scroll;
+            & .column{
+                    flex-direction: column;
+                }
             .flag{
                 width: 20px;
                 padding: 10px 0px;
@@ -92,12 +99,11 @@ export default{
                 list-style: none;
                 display: flex;
                 justify-content: center;
+                margin: 10px 0px;
                 & i{
                     color: goldenrod;
                 }
-                & p{
-                    margin-top: 20px;
-                }
+                
             }
         }
         

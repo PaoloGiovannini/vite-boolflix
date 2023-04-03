@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios';
+import axios, { Axios, AxiosHeaders } from 'axios';
 import{ store } from '../store.js';
 import Appcard from './AppCard.vue'
 
@@ -15,11 +15,19 @@ export default{
     },
     methods: {
         getCastMovie(id){
-        axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=79fa47aa93f64aa97d20631a74952dff`)
-          .then(response =>{
-            this.store.castArray=response.data.cast;
-          })
-      },
+            store.castSerie = [];
+            axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=79fa47aa93f64aa97d20631a74952dff`)
+                .then(response =>{
+                this.store.castArray=response.data.cast;
+            });
+        },
+        getCastSerie(id){
+            store.castArray = [];
+            axios.get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=79fa47aa93f64aa97d20631a74952dff`)
+                .then(response =>{
+                    this.store.castSerie=response.data.cast;
+                });
+        },
     }
 }
 </script>
@@ -46,7 +54,7 @@ export default{
         <h1 v-if="store.serieArray.length > 0">SERIE TV</h1>
         <div class="container d-flex">
             
-            <div class="card"  v-for="(serie, index) in store.serieArray" :key="index">
+            <div class="card"  v-for="(serie, index) in store.serieArray" :key="index" @mouseover="getCastSerie(serie.id)">
                 
                 <Appcard  
                     :title="serie.name"

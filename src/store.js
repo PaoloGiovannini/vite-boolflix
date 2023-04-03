@@ -6,5 +6,6 @@ export const store = reactive(
        serieArray: [],
        search: '',
        castArray: [],
+       castSerie: []
     }
 );
