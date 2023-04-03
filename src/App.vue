@@ -34,9 +34,7 @@ export default{
         this.getSerie();
       }
     },
-    created(){
-      this.getAll();
-    }
+    
     
 }
 </script>
