@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import{ store } from '../store.js';
 import Appcard from './AppCard.vue'
 
@@ -11,6 +12,14 @@ export default{
         return{
             store
         }
+    },
+    methods: {
+        getCastMovie(id){
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=79fa47aa93f64aa97d20631a74952dff`)
+          .then(response =>{
+            this.store.castArray=response.data.cast;
+          })
+      },
     }
 }
 </script>
@@ -22,7 +31,7 @@ export default{
         <h1 v-if="store.filmArray.length > 0">FILM</h1>
         <div class="container d-flex">
             
-            <div class="card"  v-for="(film, index) in store.filmArray" :key="index">
+            <div class="card"  v-for="(film, index) in store.filmArray" :key="index" @mouseover="getCastMovie(film.id)">
                 
                 <Appcard  
                     :title="film.title"

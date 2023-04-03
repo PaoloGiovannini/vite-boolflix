@@ -1,5 +1,11 @@
 <script>
+import{ store } from '../store.js';
 export default{
+    data(){
+        return{
+            store
+        }
+    },
     name: 'AppCard',
     props: {
         title: String,
@@ -44,6 +50,8 @@ export default{
                         <li>
                             <p>{{ description }}</p>
                         </li>
+                        <h3>Cast:</h3>
+                        <li v-for="(cast, index) in store.castArray.slice(0,5)" :key="index">{{ cast.name }}</li>
                     </ul>
                 </div>
             </div>

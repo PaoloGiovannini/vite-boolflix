@@ -4,6 +4,7 @@ export const store = reactive(
     {
        filmArray: [],
        serieArray: [],
-       search: ''
+       search: '',
+       castArray: [],
     }
 );
