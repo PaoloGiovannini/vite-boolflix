@@ -39,7 +39,7 @@ export default{
         <h1 v-if="store.filmArray.length > 0">FILM</h1>
         <div class="container d-flex">
             
-            <div class="card"  v-for="(film, index) in store.filmArray" :key="index" @mouseover="getCastMovie(film.id)">
+            <div class="card"  v-for="film in store.filmArray" :key="film.id" @mouseover="getCastMovie(film.id)">
                 
                 <Appcard  
                     :title="film.title"
@@ -54,7 +54,7 @@ export default{
         <h1 v-if="store.serieArray.length > 0">SERIE TV</h1>
         <div class="container d-flex">
             
-            <div class="card"  v-for="(serie, index) in store.serieArray" :key="index" @mouseover="getCastSerie(serie.id)">
+            <div class="card"  v-for="(serie, index) in store.serieArray" :key="serie.id" @mouseover="getCastSerie(serie.id)">
                 
                 <Appcard  
                     :title="serie.name"
