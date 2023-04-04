@@ -3,7 +3,9 @@ import{ store } from '../store.js';
 export default{
     data(){
         return{
-            store
+            store,
+            singleGenreArray:[],
+            genreCode: '',
         }
     },
     name: 'AppCard',
@@ -13,7 +15,25 @@ export default{
         original_language: String,
         vote: Number,
         image: String,
-        description: String
+        description: String,
+        genre:Array
+    },
+    methods:{
+        convertGenres(){
+
+            for(let i = 0; i < this.genre.length;i++){
+                this.genreCode = this.genre[i];
+                
+                for(let i = 0; i < this.store.genresArray.length; i++){
+                    if(this.genreCode == this.store.genresArray[i].id){
+                        this.singleGenreArray.push(this.store.genresArray[i].name);
+                    }
+                }
+            }
+        }
+    },
+    mounted(){
+        this.convertGenres();
     }
 }
 </script>
@@ -55,6 +75,11 @@ export default{
                             <p v-for="(cast, index) in store.castArray.slice(0,5)" :key="index">{{ cast.name }}</p></li>
                         <li class="column" v-else-if="store.castSerie.length > 0">
                             <p v-for="(element, index) in store.castSerie.slice(0,5)" :key="index">{{ element.name }}</p>
+                            
+                        </li>
+                        <h3>Genere</h3>
+                        <li id="genere">
+                            <span class="genere-span" v-for="(genere , index) in this.singleGenreArray" :key="index">{{ genere }}</span>
                         </li>
                     </ul>
                 </div>
@@ -65,6 +90,13 @@ export default{
 </template>
 
 <style scoped lang="scss">
+
+  #genere{
+    flex-wrap: wrap;
+    & .genere-span{
+            margin: 0px 7px;
+        }
+}
 .flip-card {
   background-color: transparent;
   width: 100%;
@@ -103,7 +135,7 @@ export default{
                 & i{
                     color: goldenrod;
                 }
-                
+
             }
         }
         

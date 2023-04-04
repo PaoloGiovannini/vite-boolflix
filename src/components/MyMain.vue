@@ -48,6 +48,7 @@ export default{
                     :vote="film.vote_average"
                     :image="film.poster_path"
                     :description="film.overview"
+                    :genre="film.genre_ids"
                 />                 
             </div>
         </div>
@@ -63,6 +64,7 @@ export default{
                     :vote="serie.vote_average"
                     :image="serie.poster_path"
                     :description="serie.overview"
+                    :genre="serie.genre_ids"
                 />                 
             </div>
         </div>

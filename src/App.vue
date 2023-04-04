@@ -32,8 +32,18 @@ export default{
       getAll(){
         this.getFilm();
         this.getSerie();
-      }
+      },
+      getGenreFilm(){
+        axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=79fa47aa93f64aa97d20631a74952dff')
+          .then(response => {
+            this.store.genresArray = response.data.genres;
+          })
+      },
+
     },
+    created(){
+      this.getGenreFilm();
+      }
     
     
 }
